@@ -1,3 +1,4 @@
+/* Footer/Body/Main CSS below */
 *{
 	margin: 0;
 	padding: 0;
@@ -25,7 +26,23 @@ html, body {
 	height: 100px;
 	margin-top: -100px;
 	clear: both;
-	margin-right: 20px;
-	margin-left: 20px;
+	margin-right: 200px;
+	margin-left: 200px;
 	
+}
+/* Link CSS below */
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
 }
