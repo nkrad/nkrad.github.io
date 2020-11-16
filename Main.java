@@ -7,7 +7,10 @@ Question: Bonus marks? XDDD
 Task: Create a text-based Monopoly in Java
 
 CURRENT PROBLEMS:
--
+-Map doesn't update for player 2, and shows whatever player1 had previously
+	It also sometimes doesn't update the map at all, or gives wrong placements, even though I fixed where all the tiles are.
+		Not sure where this problems resides, however I think it may be to do with "mapPlace"
+
 ********************************/
 import java.applet.*;
 import java.awt.*;
