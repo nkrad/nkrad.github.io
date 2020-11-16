@@ -9,6 +9,8 @@ Task: Create a text-based Monopoly in Java
 CURRENT PROBLEMS:
 -
 ********************************/
+import java.applet.*;
+import java.awt.*;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.ArrayList;
