@@ -1,3 +1,0 @@
-public enum Type{
-  PROPERTY,CHEST,CHANCE,TAX,JAIL,CORNER;
-}
