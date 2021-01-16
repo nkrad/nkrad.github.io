@@ -15,7 +15,7 @@ p {
   position: absolute;
   justify-content: space-between;
   background-color: #ffffff;
-  color: #fff;
+  color: rgb(255, 255, 255);
   right: 0;
   width: 100%;
   min-height: 100vh;
