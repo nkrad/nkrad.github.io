@@ -1,15 +1,92 @@
-body {
-    background-image: url('starschange.gif');
-    color: White;
+@import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Play", sans-serif;
 }
 
-.me {
-    width:235.88px;
-    height:235.88px;
-    background-image: url("melol.png");
-    background-size: cover;
+.main {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  background-color: #ffffff;
+  color: #fff;
+  right: 0;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px;
+  z-index: 2;
+  transition: 0.7s;
 }
 
-.me:hover {
-    background-image: url("melollazer.jpg");
+.main video {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  mix-blend-mode: overlay;
+}
+
+.text {
+  color: #000000;
+  margin-top: 10px;
+  position: relative;
+  z-index: 5;
+}
+
+.text h2 {
+  font-size: 2em;
+  font-weight: 600;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+.text h3 {
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+.text p {
+  font-size: 1em;
+  font-weight: 400;
+  margin: 20px 0;
+  max-width: 700px;
+}
+
+.text a {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 1em;
+  background: #fff;
+  color: #111;
+  padding: 10px 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.text a:hover {
+  letter-spacing: 5px;
+}
+
+.logo {
+  text-transform: uppercase;
+  cursor: pointer;
 }

@@ -1,0 +1,15 @@
+body {
+    background-image: url('starschange.gif');
+    color: White;
+}
+
+.me {
+    width:235.88px;
+    height:235.88px;
+    background-image: url("melol.png");
+    background-size: cover;
+}
+
+.me:hover {
+    background-image: url("melollazer.jpg");
+}
