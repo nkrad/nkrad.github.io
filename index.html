@@ -94,16 +94,14 @@
       var txt1 = 'Nick Radocaj';
       var txt2 = 'Studying Business Information Technology at Red River College with an interest in programming (Java, C#, Python) and a basic understanding of web development.';
       var txt3 = 'Projects';
-      var txt4 = 'Not currently working on any projects outside of school.';
-      
-      var speed = 35;
+      var txt4 = 'Not currently working on any projects. Past projects are available to be viewed on my GitHub account (nkrad). See below for socials and contact information.';
       
       // First typewrite (Nick Radocaj)
       function typeWriter1() {
         if (i < txt1.length) {
           document.getElementById("detail1").innerHTML += txt1.charAt(i);
           i++;
-          setTimeout(typeWriter1, speed);
+          setTimeout(typeWriter1, 15);
         }
         if (i == txt1.length) {
           typeWriter2();
@@ -115,7 +113,7 @@
         if (j < txt2.length) {
           document.getElementById("detail2").innerHTML += txt2.charAt(j);
           j++;
-          setTimeout(typeWriter2, speed);
+          setTimeout(typeWriter2, 30);
         }
         if (j == txt2.length) {
           typeWriter3();
@@ -127,7 +125,7 @@
         if (k < txt3.length) {
           document.getElementById("detail3").innerHTML += txt3.charAt(k);
           k++;
-          setTimeout(typeWriter3, speed);
+          setTimeout(typeWriter3, 15);
         }
         if (k == txt3.length) {
           typeWriter4();
@@ -137,7 +135,7 @@
         if (l < txt4.length) {
           document.getElementById("detail4").innerHTML += txt4.charAt(l);
           l++;
-          setTimeout(typeWriter4, speed);
+          setTimeout(typeWriter4, 30);
         }
       }
       </script>
