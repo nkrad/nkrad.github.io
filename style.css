@@ -19,7 +19,7 @@ p {
   right: 0;
   width: 100%;
   min-height: 100vh;
-  padding: 7%;
+  padding: 5%;
   z-index: 2;
   transition: 1s;
 }
