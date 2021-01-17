@@ -36,12 +36,13 @@
     <body onload="typeWriter1();"></body>
     <section class="main">
     <video src="wavey.mp4" muted="" loop="" autoplay="" id="myVideo"></video>
-    <div class="overlay"></div>
+    <div class="videoOverlay"></div>
+    <div class="textOverlay"></div>
     <div class="text">
-        <b><i><h2 id="detail1"></h2></i></b> <!-- Nick Radocaj -->
+        <b><h2 id="detail1"></h2></b> <!-- Nick Radocaj -->
         <p id="detail2"></p> <!-- Bio -->
         <br>
-        <b><i><h2 id="detail3"></h2></i></b> <!-- Projects -->
+        <b><h2 id="detail3"></h2></b> <!-- Projects -->
         <p id="detail4"></p> <!-- Project desc. -->
       </div>
     </section>
@@ -99,6 +100,7 @@
       var txt3 = 'Projects';
       var txt4 = 'Not currently working on any projects. Past projects are available to be viewed on GitHub. See below for socials and contact information.';
       
+
       // First typewrite (Nick Radocaj)
       function typeWriter1() {
         if (i < txt1.length) {
