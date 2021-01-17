@@ -38,12 +38,13 @@
     <video src="wavey.mp4" muted="" loop="" autoplay="" id="myVideo"></video>
     <div class="overlay"></div>
     <div class="text">
-        <i><h2 id="detail1"></h2></i>
-        <p id="detail2"></p>
-        <i><h2 id="detail3"></h2></i>
-        <p id="detail4"></p>
+        <i><h2 id="detail1"></h2></i> <!-- Nick Radocaj -->
+        <p id="detail2"></p> <!-- Bio -->
+        <br>
+        <i><h2 id="detail3"></h2></i> <!-- Projects -->
+        <p id="detail4"></p> <!-- Project desc. -->
       </div>
-      <ul class="social">
+      <ul class="social"> <!-- Social Media "Footer" -->
         <li>
           <a href="https://www.linkedin.com/in/nkrad/">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -92,9 +93,9 @@
       var l = 0;
 
       var txt1 = 'Nick Radocaj';
-      var txt2 = 'Studying Business Information Technology at Red River College with an interest in programming (Java, C#, Python) and a basic understanding of web development.';
+      var txt2 = 'Studying Business Information Technology at Red River College with an interest in programming (Java, C#, Python) and a basic understanding of web development frameworks.';
       var txt3 = 'Projects';
-      var txt4 = 'Not currently working on any projects. Past projects are available to be viewed on my GitHub account (nkrad). See below for socials and contact information.';
+      var txt4 = 'Not currently working on any projects. Past projects are available to be viewed on GitHub. See below for socials and contact information.';
       
       // First typewrite (Nick Radocaj)
       function typeWriter1() {
@@ -107,7 +108,6 @@
           typeWriter2();
         }
       }
-
       // Second typewrite (Bio)
       function typeWriter2() {
         if (j < txt2.length) {
@@ -119,7 +119,6 @@
           typeWriter3();
         }
       }
-
       // Third typewrite (Projects)
       function typeWriter3() {
         if (k < txt3.length) {
@@ -131,7 +130,8 @@
           typeWriter4();
         }
       }
-        function typeWriter4() {
+      // Third typewrite (Projects)
+      function typeWriter4() {
         if (l < txt4.length) {
           document.getElementById("detail4").innerHTML += txt4.charAt(l);
           l++;
