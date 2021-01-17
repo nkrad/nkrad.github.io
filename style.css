@@ -42,13 +42,13 @@ p {
   height: 100%;
   background-color: #000000;
   mix-blend-mode: overlay;
+  z-index: 10; /* Lower if you want the text to be selectable */
 }
 
 .text {
   color: #000000;
-  margin-top: 10px;
-  position: relative;
-  z-index: 5;
+  position: absolute;
+  z-index: 1;
 }
 
 .text h2 {
@@ -66,6 +66,7 @@ p {
 }
 
 .text p {
+  background-color: rgba(72, 255, 0, 0.123);
   font-size: 1em;
   font-weight: 400;
   margin: 20px 0;
