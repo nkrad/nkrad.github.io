@@ -93,7 +93,7 @@ p {
   color: rgb(0, 0, 0);
   margin-right: 15px;
   transform: scale(1.5);
-  transition: 0.6s;
+  transition: 0.5s;
 }
 
 .social li a:hover {
