@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <!-- Primary Meta Tags -->
+    <title>nkrad.ca | Contact</title>
+    <meta name="title" content="nkrad.ca | Nick Radocaj's Website" />
+    <meta
+      name="description"
+      content="Contact page on nkrad.ca"
+    />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nkrad.ca/" />
+    <meta property="og:title" content="nkrad.ca | Nick Radocaj's Website" />
+    <meta
+      property="og:description"
+      content="Contact page on nkrad.ca"
+    />
+    <meta property="og:image" content="webicon.png" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://nkrad.ca/" />
+    <meta
+      property="twitter:title"
+      content="Contact page on nkrad.ca"
+    />
+    <meta
+      property="twitter:description"
+      content="Contact page on nkrad.ca"
+    />
+    <meta property="twitter:image" content="webicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="webicon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="main">
+    <video src="wavey.mp4" muted="" loop="" autoplay="" id="myVideo"></video>
+    <div class="videoOverlay"></div>
+    <div class="text">
+        <b><h2>Contact</h2></b>
+        <br>
+        <form action="contact.php" method="POST">
+          <label for="fname">Full name:</label><br>
+          <input style="width: 220px;" type="text" id="name" name="name">
+          <br>
+          <br>
+          <label for="email">Email address:</label><br>
+          <input style="width: 220px;" type="text" id="email" name="email">
+          <br>
+          <br>
+          <!-- <label for="email">Subject:</label><br>
+          <input style="width: 220px;" type="text" id="subject" name="subject">
+          <br>
+          <br> -->
+          <label for="email">Message:</label><br>
+          <textarea style="width: 220px;" type="text" id="message" name="message"> </textarea>
+          <br>
+          <br>
+          <input type="submit" value="Submit">
+        </form> 
+      </div>
+    </section>
+</html>
