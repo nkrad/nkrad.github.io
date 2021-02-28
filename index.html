@@ -35,7 +35,10 @@
   <body>
     <body onload="typeWriter1();"></body>
     <section class="main">
-    <video src="wavey.mp4" muted="" loop="" autoplay="" id="myVideo"></video>
+    <video muted loop autoplay playsinline id="myVideo" poster="fallback.png">
+      <source src="wavey.mp4" type="video/mp4">
+        <source src="wavey.webm" type="video/webm">
+    </video>
     <div class="videoOverlay"></div>
     <div class="textOverlay"></div> 
     <div class="text">
