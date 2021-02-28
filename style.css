@@ -11,6 +11,10 @@ p {
   word-wrap: unset;
 }
 
+body {
+  background-color: #000000;
+}
+
 .main {
   display: flex;
   position: absolute;
