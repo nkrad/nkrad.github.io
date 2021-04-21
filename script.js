@@ -1,4 +1,3 @@
-//FORM VALIDATION
 (function () {
     "use strict";
     window.addEventListener(
