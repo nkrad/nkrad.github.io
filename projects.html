@@ -132,9 +132,10 @@
 
       var txt1 = 'Projects';
       var txt2 = 'Past projects are available to be viewed on GitHub. See below for socials and contact information.';
-      
+      var txt3 = 'PythonBTCPrivPubKeygen';
+      var txt4 = 'Developed a local Bitcoin private and public key generator in Python. Project is available to be viewed on GitHub (link in footer) ';
 
-      // First typewrite (Nick Radocaj)
+      // First typewrite (Projects)
       function typeWriter1() {
         if (i < txt1.length) {
           document.getElementById("detail1").innerHTML += txt1.charAt(i);
@@ -145,7 +146,7 @@
           typeWriter2();
         }
       }
-      // Second typewrite (Bio)
+      // Second typewrite (Projects Desc)
       function typeWriter2() {
         if (j < txt2.length) {
           document.getElementById("detail2").innerHTML += txt2.charAt(j);
@@ -156,7 +157,7 @@
           typeWriter3();
         }
       }
-      // Third typewrite (Projects)
+      // Third typewrite (PythonBTC)
       function typeWriter3() {
         if (k < txt3.length) {
           document.getElementById("detail3").innerHTML += txt3.charAt(k);
@@ -167,7 +168,7 @@
           typeWriter4();
         }
       }
-      // Third typewrite (Projects)
+      // Third typewrite (PythonBTC Desc)
       function typeWriter4() {
         if (l < txt4.length) {
           document.getElementById("detail4").innerHTML += txt4.charAt(l);
