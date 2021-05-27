@@ -12,6 +12,7 @@ body {
 a {
   color: rgb(69, 190, 65);
   display: inline-block;
+  text-decoration: none;
 }
 
 a:hover {
