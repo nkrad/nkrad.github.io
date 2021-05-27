@@ -1,18 +1,11 @@
-* {
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+s * {
   margin: 0px;
-  font-family: "coolveticaregular";
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
   margin: 20px;
-}
-
-@font-face {
-  font-family: "coolveticaregular";
-  src: url("coolvetica_rg-webfont.woff2") format("woff2"),
-    url("coolvetica_rg-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
 }
 
 a {
