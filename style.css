@@ -22,14 +22,31 @@ a:hover {
 a:nth-child(3) {
   color: rgb(223, 180, 41);
 }
+
+a:nth-child(3):hover {
+  color: rgb(47, 49, 146);
+}
+
 a:nth-child(4) {
   color: rgb(150, 150, 150);
+}
+
+a:nth-child(4):hover {
+  color: rgb(164, 39, 175);
 }
 
 a:nth-child(5) {
   color: rgb(82, 100, 160);
 }
 
+a:nth-child(5):hover {
+  color: rgb(204, 90, 118);
+}
+
 a:nth-child(6) {
   color: rgb(41, 131, 204);
+}
+
+a:nth-child(6):hover {
+  color: rgb(83, 192, 101);
 }
