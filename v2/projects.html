@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Primary Meta Tags -->
+    <title>nkrad.ca | Nick Radocaj's Website</title>
+    <meta name="title" content="nkrad.ca | Nick Radocaj's Website" />
+    <meta
+      name="description"
+      content="Links to all socials as well as current projects."
+    />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nkrad.ca/" />
+    <meta property="og:title" content="nkrad.ca | Nick Radocaj's Website" />
+    <meta
+      property="og:description"
+      content="Links to all socials as well as current projects."
+    />
+    <meta property="og:image" content="webicon.png" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://nkrad.ca/" />
+    <meta
+      property="twitter:title"
+      content="nkrad.ca | Nick Radocaj's Website"
+    />
+    <meta
+      property="twitter:description"
+      content="Links to all socials as well as current projects."
+    />
+    <meta property="twitter:image" content="webicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="webicon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body onload="typeWriter1();">
+    <div class="topnav">
+      <a href="https://nkrad.ca/v2/">Home</a>
+      <a href="https://nkrad.ca/v2/projects.html">Projects</a>
+    </div> 
+    <section class="main">
+    <video muted loop autoplay playsinline id="myVideo">
+      <source src="wavey.mp4" type="video/mp4">
+        <source src="wavey.webm" type="video/webm">
+    </video>
+    <div class="videoOverlay"></div>
+    <div class="textOverlay"></div> 
+    <div class="text">
+        <h2 id="detail1"><b></b></h2> <!-- Nick Radocaj -->
+        <p id="detail2"></p> <!-- Bio -->
+        <br>
+        <h2 id="detail3"><b></b></h2> <!-- Projects -->
+        <p id="detail4"></p> <!-- Project desc. -->
+      </div>
+    </section>
+    <section class="footer">
+      <ul class="social"> <!-- Social Media "Footer" -->
+        <li>
+          <a href="mailto:me@nkrad.ca">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <polyline points="3 7 12 13 21 7" />
+            </svg></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/nkrad/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <rect x="4" y="4" width="16" height="16" rx="2" />
+              <line x1="8" y1="11" x2="8" y2="16" />
+              <line x1="8" y1="8" x2="8" y2="8.01" />
+              <line x1="12" y1="16" x2="12" y2="11" />
+              <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+            </svg></a>
+        </li>
+        <li>
+          <a href="https://github.com/nkrad/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+            </svg></a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/nkrad/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <rect x="4" y="4" width="16" height="16" rx="4" />
+              <circle cx="12" cy="12" r="3" />
+              <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+            </svg></a>
+        </li>
+        <!--<li>
+          <a href="https://www.blockchain.com/btc/address/1nkradwXEw13T9tDfhFpkXBbaLV6qqW3i">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wallet" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12" />
+              <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
+            </svg></a>
+        </li> -->
+        <li>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-youtube" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <rect x="3" y="5" width="18" height="14" rx="4" />
+              <path d="M10 9l5 3l-5 3z" />
+            </svg></a>
+        </li>
+        <!--<li>
+          <a href="http://facebook.com/profile.php?=73322363">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+            </svg></a>
+        </li>-->
+        <li>
+          <a href="https://www.grailed.com/nkrad">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shirt" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M15 4l6 2v5h-3v8a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1v-8h-3v-5l6 -2a3 3 0 0 0 6 0" />
+            </svg></a>
+        </li>
+      </ul>
+    </section>
+    <script>
+      // I am very aware this can be done better lool
+      var i = 0;
+      var j = 0;
+      var k = 0;
+      var l = 0;
+
+      var txt1 = 'Projects';
+      var txt2 = 'Past projects are available to be viewed on GitHub. See below for socials and contact information.';
+      var txt3 = 'PythonBTCPrivPubKeygen';
+      var txt4 = 'Developed a local Bitcoin private and public key generator in Python. Project is available to be viewed on GitHub (link in footer) ';
+
+      // First typewrite (Projects)
+      function typeWriter1() {
+        if (i < txt1.length) {
+          document.getElementById("detail1").innerHTML += txt1.charAt(i);
+          i++;
+          setTimeout(typeWriter1, 15);
+        }
+        if (i == txt1.length) {
+          typeWriter2();
+        }
+      }
+      // Second typewrite (Projects Desc)
+      function typeWriter2() {
+        if (j < txt2.length) {
+          document.getElementById("detail2").innerHTML += txt2.charAt(j);
+          j++;
+          setTimeout(typeWriter2, 30);
+        }
+        if (j == txt2.length) {
+          typeWriter3();
+        }
+      }
+      // Third typewrite (PythonBTC)
+      function typeWriter3() {
+        if (k < txt3.length) {
+          document.getElementById("detail3").innerHTML += txt3.charAt(k);
+          k++;
+          setTimeout(typeWriter3, 15);
+        }
+        if (k == txt3.length) {
+          typeWriter4();
+        }
+      }
+      // Third typewrite (PythonBTC Desc)
+      function typeWriter4() {
+        if (l < txt4.length) {
+          document.getElementById("detail4").innerHTML += txt4.charAt(l);
+          l++;
+          setTimeout(typeWriter4, 30);
+        }
+      }
+      </script>
+</html>
