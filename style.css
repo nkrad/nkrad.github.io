@@ -44,11 +44,11 @@ a h1:hover{
 }
 
 .ig-header p{
-  background-color: rgb(65, 60, 85);
-  padding: 10px;
+  background-color: rgba(25, 24, 31, 0.15);
+  padding: 7.5px;
   text-align: center;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 5px;
   border-radius: 15px;
 }
