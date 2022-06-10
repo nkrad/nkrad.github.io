@@ -14,11 +14,11 @@
 
 body {
   margin: 20px;
-  background-color: rgb(60, 60, 85);
+  background-color: rgb(32, 33, 36);
 }
 
 a {
-  color: rgb(179, 255, 0);
+  color: rgb(106, 125, 230);
   display: inline-block;
   text-decoration: none;
 }
