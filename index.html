@@ -23,21 +23,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="webicon.png" />
     <link rel="apple-touch-icon" href="webicon.png" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/7.css">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="header">
-      <img src="namecard.png" alt="NickRadocaj" width="30%" />
-      <br>
-      <p>Studied Business Information Technology at <a href="https://catalogue.rrc.ca/Programs/WPG/Fulltime/BUSGF-DP" class="RRC" >RRC Polytech</a></p>
-      <p>Currently in Co-Op term (May - August 2022)</p>
-      <p>Anticipated Graduation Fall 2022</p>
-      <br>
-      <p>Some past work can be viewed on <a href="https://github.com/nkrad">GitHub</a></p>
-      <br>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/nkrad/">Nick Radocaj</a></p>
-      <br>
-      <p>Email me: <a href="mailto:nick@nkrad.ca">nick@nkrad.ca</a></p>
-    </div>
+      <div id="mydiv">
+        <div class="background">
+          <div class="window glass" id="mydivheader" style="max-width: 320px">
+            <div class="title-bar">
+              <div class="title-bar-text">About</div>
+              <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Close" onclick="deleteWindow()"></button>
+              </div>
+            </div>
+            <div class="window-body">
+              <div class="header">
+                <p>Studied Business Information Technology at <a href="https://catalogue.rrc.ca/Programs/WPG/Fulltime/BUSGF-DP" class="RRC" >RRC Polytech</a></p>
+                <p>Currently in Co-Op term (May - August 2022)</p>
+                <p>Anticipated Graduation Fall 2022</p>
+                <p>Some past work can be viewed on <a href="https://github.com/nkrad">GitHub</a></p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/nkrad/">Nick Radocaj</a></p>
+                <p>Email me: <a href="mailto:nick@nkrad.ca">nick@nkrad.ca</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="script.js"></script>
   </body>
 </html>

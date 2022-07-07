@@ -6,12 +6,6 @@
   font-style: normal;
 }
 
-* {
-  margin: 0px;
-  font-family: "coolveticaregular", Arial;
-  color: white;
-}
-
 body {
   margin: 20px;
   background-color: rgb(32, 33, 36);
@@ -51,4 +45,20 @@ a h1:hover{
   font-size: 16px;
   margin: 5px;
   border-radius: 15px;
+}
+
+#mydiv {
+  position: absolute;
+  z-index: 9;
+}
+
+#mydivheader {
+  cursor: move;
+}
+
+body {
+  background-image: url('ko2w1C.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
