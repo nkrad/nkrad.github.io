@@ -2,128 +2,165 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CS Hoodie Customizer</title>
+  <title>🖌️ Hoodie Customizer</title>
   <style>
+    /* ─── Reset & Base ───────────────────────────────────────── */
+    * { box-sizing: border-box; margin: 0; padding: 0 }
     body {
-      font-family: sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      background: #ececec;
+      color: #333;
+      line-height: 1.4;
       text-align: center;
       padding: 2rem;
-      background: #f0f0f0;
     }
-    .controls {
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.2rem;
+    }
+    p.lead {
+      color: #555;
       margin-bottom: 1.5rem;
+    }
+
+    /* ─── Control Panel ─────────────────────────────────────── */
+    .controls {
       display: flex;
       justify-content: center;
       gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
     }
     .palette-wrapper {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       text-align: left;
+      min-width: 180px;
     }
     .palette-wrapper label {
       display: block;
-      margin-bottom: 0.5rem;
       font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
     }
     .palette {
       display: flex;
       flex-wrap: wrap;
-      max-width: 200px;
       gap: 4px;
     }
     .swatch {
-      width: 24px;
-      height: 24px;
-      border: 1px solid #999;
+      width: 24px; height: 24px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
       cursor: pointer;
     }
     .swatch.active {
-      outline: 2px solid #333;
+      outline: 2px solid #444;
+    }
+    #exportBtn {
+      margin-top: 0.5rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    #exportOutput {
+      display: none;
+      width: 100%;
+      max-width: 600px;
+      margin: 1rem auto 0;
+      padding: 0.75rem;
+      font-family: monospace;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fafafa;
+      resize: vertical;
     }
 
-    /* Viewer */
+    /* ─── Viewer ────────────────────────────────────────────── */
     .viewer {
       position: relative;
-      width: 800px;
-      height: 800px;
-      margin: auto;
-      border: 1px solid #ccc;
+      width: 800px; height: 800px;
+      margin: 0 auto;
       background: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
     }
     .layer, #overlay {
-      position: absolute;
-      top: 0; left: 0;
+      position: absolute; top: 0; left: 0;
       width: 100%; height: 100%;
       pointer-events: none;
     }
     .layer {
       background-color: var(--color, #000);
-      mask-repeat: no-repeat;
-      mask-position: center;
-      mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-position: center;
-      -webkit-mask-size: contain;
+      mask-repeat: no-repeat;      mask-position: center;      mask-size: contain;
+      -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; -webkit-mask-size: contain;
     }
     #overlay {
       background: url('hoodieshadowoverlay.png') center/contain no-repeat;
       mix-blend-mode: multiply;
-      /* opacity: 0.8;  /* tweak to soften if needed */
+      /* optional: opacity: .8; */
     }
   </style>
 </head>
 <body>
 
-  <h1>Customize Your Hoodie</h1>
+  <h1>🖌️ Hoodie Customizer</h1>
+  <p class="lead">Pick your hoodie, text &amp; icon colors, then export your selections.</p>
 
   <div class="controls">
-    <!-- Hoodie palette -->
+    <!-- Hoodie Palette -->
     <div class="palette-wrapper">
-      <label>Hoodie Color:</label>
+      <label>Hoodie Color</label>
       <div id="hoodiePalette" class="palette"></div>
     </div>
-    <!-- Text palette -->
+
+    <!-- Text Palette -->
     <div class="palette-wrapper">
-      <label>Text Color:</label>
+      <label>Text Color</label>
       <div id="textPalette" class="palette"></div>
     </div>
-    <!-- Icon palette -->
+
+    <!-- Icon Palette -->
     <div class="palette-wrapper">
-      <label>Icon Color:</label>
+      <label>Icon Color</label>
       <div id="iconPalette" class="palette"></div>
     </div>
   </div>
 
+  <button id="exportBtn">Export Colors</button>
+  <textarea id="exportOutput" readonly rows="6"></textarea>
+
   <div class="viewer">
-    <!-- hoodie silhouette -->
     <div id="hoodie" class="layer"
-         style="
-           --color: #0B0B0B;
-           mask-image: url('hoodiemask.png');
-           -webkit-mask-image: url('hoodiemask.png');
-         ">
+         style="--color:#0B0B0B;
+                mask-image:url('hoodiemask.png');
+                -webkit-mask-image:url('hoodiemask.png');">
     </div>
-    <!-- Counter‑Strike text -->
     <div id="csText" class="layer"
-         style="
-           --color: #000000;
-           mask-image: url('counterstrikemask.png');
-           -webkit-mask-image: url('counterstrikemask.png');
-         ">
+         style="--color:#000000;
+                mask-image:url('counterstrikemask.png');
+                -webkit-mask-image:url('counterstrikemask.png');">
     </div>
-    <!-- gun‑man icon -->
     <div id="icon" class="layer"
-         style="
-           --color: #000000;
-           mask-image: url('gunman.png');
-           -webkit-mask-image: url('gunman.png');
-         ">
+         style="--color:#000000;
+                mask-image:url('gunman.png');
+                -webkit-mask-image:url('gunman.png');">
     </div>
-    <!-- shadow/highlight overlay -->
     <div id="overlay"></div>
   </div>
 
   <script>
-    // Your two palettes: hoodie (25 colors) and text/icon (same 15 as before)
+    // palettes data
     const hoodieColors = [
       '#0B0B0B','#131928','#47171C','#35241B','#222E1F','#4A1C7D',
       '#DA0A1A','#47484D','#1D50A4','#534E4A','#395D82','#515A6E',
@@ -137,18 +174,16 @@
       '#005397','#3399FF','#6B5294','#01784E','#7BA35A'
     ];
 
-    // Utility to build a clickable swatch palette
-    function buildPalette(containerId, layerEl, colors) {
-      const cont = document.getElementById(containerId);
+    // helper: build swatch grid
+    function buildPalette(id, layerEl, colors) {
+      const cont = document.getElementById(id);
       colors.forEach(col => {
         const sw = document.createElement('div');
         sw.className = 'swatch';
         sw.style.backgroundColor = col;
-        // mark default
         if (layerEl.style.getPropertyValue('--color').trim().toUpperCase() === col)
           sw.classList.add('active');
         sw.addEventListener('click', () => {
-          // clear active
           cont.querySelectorAll('.swatch').forEach(s=>s.classList.remove('active'));
           sw.classList.add('active');
           layerEl.style.setProperty('--color', col);
@@ -157,16 +192,36 @@
       });
     }
 
-    // Grab your layers
+    // grab layers
     const hoodieLayer = document.getElementById('hoodie');
     const textLayer   = document.getElementById('csText');
     const iconLayer   = document.getElementById('icon');
 
-    // Build all three palettes
+    // build three palettes
     buildPalette('hoodiePalette', hoodieLayer, hoodieColors);
     buildPalette('textPalette',   textLayer,   textIconColors);
     buildPalette('iconPalette',   iconLayer,   textIconColors);
-  </script>
 
+    // export button
+    const exportBtn    = document.getElementById('exportBtn');
+    const exportOutput = document.getElementById('exportOutput');
+
+    exportBtn.addEventListener('click', () => {
+      const data = {
+        hoodieColor: getComputedStyle(hoodieLayer).getPropertyValue('--color').trim(),
+        textColor:   getComputedStyle(textLayer).getPropertyValue('--color').trim(),
+        iconColor:   getComputedStyle(iconLayer).getPropertyValue('--color').trim()
+      };
+      const json = JSON.stringify(data, null, 2);
+      exportOutput.value = json;
+      exportOutput.style.display = 'block';
+      exportOutput.select();
+      // try to copy to clipboard
+      navigator.clipboard.writeText(json).then(() => {
+        exportBtn.textContent = '✅ Copied!';
+        setTimeout(() => exportBtn.textContent = 'Export Colors', 2000);
+      });
+    });
+  </script>
 </body>
 </html>
