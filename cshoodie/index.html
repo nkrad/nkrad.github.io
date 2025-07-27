@@ -10,7 +10,6 @@
       font-family: 'Segoe UI', sans-serif;
       background: #ececec;
       color: #333;
-      line-height: 1.4;
       text-align: center;
       padding: 2rem;
     }
@@ -37,7 +36,7 @@
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       text-align: left;
-      min-width: 180px;
+      min-width: 140px;
     }
     .palette-wrapper label {
       display: block;
@@ -59,9 +58,17 @@
     .swatch.active {
       outline: 2px solid #444;
     }
+    select {
+      width: 100%;
+      padding: 6px;
+      font-size: 0.9rem;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      background: #fff;
+    }
+
     #exportBtn {
       margin-top: 0.5rem;
-      display: inline-block;
       padding: 0.5rem 1rem;
       background: #333;
       color: #fff;
@@ -72,24 +79,39 @@
     }
     #exportOutput {
       display: none;
-      width: 100%;
-      max-width: 600px;
+      text-align: left;
       margin: 1rem auto 0;
+      max-width: 600px;
       padding: 0.75rem;
-      font-family: monospace;
-      font-size: 0.9rem;
-      line-height: 1.2;
+      background: #fafafa;
       border: 1px solid #ccc;
       border-radius: 4px;
-      background: #fafafa;
-      resize: vertical;
+    }
+    .export-item {
+      margin: 6px 0;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+    .color-box {
+      display: inline-block;
+      width: 12px; height: 12px;
+      margin-right: 8px;
+      vertical-align: middle;
+      border: 1px solid #aaa;
+      border-radius: 2px;
+    }
+    #exportNote {
+      display: none;
+      margin-top: 0.5rem;
+      color: #555;
+      font-size: 0.9rem;
     }
 
     /* ─── Viewer ────────────────────────────────────────────── */
     .viewer {
       position: relative;
       width: 800px; height: 800px;
-      margin: 0 auto;
+      margin: 2rem auto 0;
       background: #fff;
       border: 1px solid #ddd;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -102,20 +124,19 @@
     }
     .layer {
       background-color: var(--color, #000);
-      mask-repeat: no-repeat;      mask-position: center;      mask-size: contain;
+      mask-repeat: no-repeat; mask-position: center; mask-size: contain;
       -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; -webkit-mask-size: contain;
     }
     #overlay {
       background: url('hoodieshadowoverlay.png') center/contain no-repeat;
       mix-blend-mode: multiply;
-      /* optional: opacity: .8; */
     }
   </style>
 </head>
 <body>
 
   <h1>🖌️ Hoodie Customizer</h1>
-  <p class="lead">Pick your hoodie, text &amp; icon colors, then export your selections.</p>
+  <p class="lead">Pick your hoodie, text &amp; icon colors and select a size, then export!</p>
 
   <div class="controls">
     <!-- Hoodie Palette -->
@@ -135,24 +156,38 @@
       <label>Icon Color</label>
       <div id="iconPalette" class="palette"></div>
     </div>
+
+    <!-- Size Selector -->
+    <div class="palette-wrapper">
+      <label>Size</label>
+      <select id="sizeSelect">
+        <option value="S">S</option>
+        <option value="M" selected>M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="2XL">2XL</option>
+        <option value="3XL">3XL</option>
+      </select>
+    </div>
   </div>
 
-  <button id="exportBtn">Export Colors</button>
-  <textarea id="exportOutput" readonly rows="6"></textarea>
+  <button id="exportBtn">Export Colors &amp; Size</button>
+  <div id="exportOutput"></div>
+  <p id="exportNote">Copy this text above and send to Nick, he knows what to do next 😎</p>
 
   <div class="viewer">
     <div id="hoodie" class="layer"
-         style="--color:#0B0B0B;
+         style="--color:#131928;
                 mask-image:url('hoodiemask.png');
                 -webkit-mask-image:url('hoodiemask.png');">
     </div>
     <div id="csText" class="layer"
-         style="--color:#000000;
+         style="--color:#FFCC00;
                 mask-image:url('counterstrikemask.png');
                 -webkit-mask-image:url('counterstrikemask.png');">
     </div>
     <div id="icon" class="layer"
-         style="--color:#000000;
+         style="--color:#FFFFFF;
                 mask-image:url('gunman.png');
                 -webkit-mask-image:url('gunman.png');">
     </div>
@@ -174,9 +209,21 @@
       '#005397','#3399FF','#6B5294','#01784E','#7BA35A'
     ];
 
-    // helper: build swatch grid
-    function buildPalette(id, layerEl, colors) {
-      const cont = document.getElementById(id);
+    // grab elements
+    const hoodieLayer = document.getElementById('hoodie');
+    const textLayer   = document.getElementById('csText');
+    const iconLayer   = document.getElementById('icon');
+    const sizeSelect  = document.getElementById('sizeSelect');
+    const exportBtn   = document.getElementById('exportBtn');
+    const exportOutput= document.getElementById('exportOutput');
+    const exportNote  = document.getElementById('exportNote');
+
+    let hasExported = false;
+    let lastJSON = '';
+
+    // build a swatch palette
+    function buildPalette(containerId, layerEl, colors) {
+      const cont = document.getElementById(containerId);
       colors.forEach(col => {
         const sw = document.createElement('div');
         sw.className = 'swatch';
@@ -187,40 +234,54 @@
           cont.querySelectorAll('.swatch').forEach(s=>s.classList.remove('active'));
           sw.classList.add('active');
           layerEl.style.setProperty('--color', col);
+          if (hasExported) updateExport();
         });
         cont.appendChild(sw);
       });
     }
 
-    // grab layers
-    const hoodieLayer = document.getElementById('hoodie');
-    const textLayer   = document.getElementById('csText');
-    const iconLayer   = document.getElementById('icon');
-
-    // build three palettes
+    // populate palettes
     buildPalette('hoodiePalette', hoodieLayer, hoodieColors);
     buildPalette('textPalette',   textLayer,   textIconColors);
     buildPalette('iconPalette',   iconLayer,   textIconColors);
 
-    // export button
-    const exportBtn    = document.getElementById('exportBtn');
-    const exportOutput = document.getElementById('exportOutput');
+    // size change handler
+    sizeSelect.addEventListener('change', () => {
+      if (hasExported) updateExport();
+    });
 
-    exportBtn.addEventListener('click', () => {
+    // update the export panel
+    function updateExport() {
       const data = {
         hoodieColor: getComputedStyle(hoodieLayer).getPropertyValue('--color').trim(),
         textColor:   getComputedStyle(textLayer).getPropertyValue('--color').trim(),
-        iconColor:   getComputedStyle(iconLayer).getPropertyValue('--color').trim()
+        iconColor:   getComputedStyle(iconLayer).getPropertyValue('--color').trim(),
+        size:        sizeSelect.value
       };
-      const json = JSON.stringify(data, null, 2);
-      exportOutput.value = json;
-      exportOutput.style.display = 'block';
-      exportOutput.select();
-      // try to copy to clipboard
-      navigator.clipboard.writeText(json).then(() => {
-        exportBtn.textContent = '✅ Copied!';
-        setTimeout(() => exportBtn.textContent = 'Export Colors', 2000);
-      });
+      lastJSON = JSON.stringify(data, null, 2);
+      exportOutput.innerHTML =
+        `<div class="export-item"><span class="color-box" style="background:${data.hoodieColor}"></span>`+
+          `hoodieColor: "${data.hoodieColor}"</div>`+
+        `<div class="export-item"><span class="color-box" style="background:${data.textColor}"></span>`+
+          `textColor: "${data.textColor}"</div>`+
+        `<div class="export-item"><span class="color-box" style="background:${data.iconColor}"></span>`+
+          `iconColor: "${data.iconColor}"</div>`+
+        `<div class="export-item"><strong>size:</strong> "${data.size}"</div>`;
+      if (!hasExported) {
+        exportOutput.style.display = 'block';
+        exportNote.style.display = 'block';
+        hasExported = true;
+      }
+    }
+
+    // export button
+    exportBtn.addEventListener('click', () => {
+      updateExport();
+      navigator.clipboard.writeText(lastJSON)
+        .then(() => {
+          exportBtn.textContent = '✅ Copied!';
+          setTimeout(() => exportBtn.textContent = 'Export Colors & Size', 2000);
+        });
     });
   </script>
 </body>
