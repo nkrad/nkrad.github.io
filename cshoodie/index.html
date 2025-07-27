@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CS Hoodie Customizer</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+      background: #f0f0f0;
+    }
+    .controls {
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .palette-wrapper {
+      text-align: left;
+    }
+    .palette-wrapper label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 200px;
+      gap: 4px;
+    }
+    .swatch {
+      width: 24px;
+      height: 24px;
+      border: 1px solid #999;
+      cursor: pointer;
+    }
+    .swatch.active {
+      outline: 2px solid #333;
+    }
+
+    /* Viewer */
+    .viewer {
+      position: relative;
+      width: 800px;
+      height: 800px;
+      margin: auto;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+    .layer, #overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    .layer {
+      background-color: var(--color, #000);
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      -webkit-mask-size: contain;
+    }
+    #overlay {
+      background: url('hoodieshadowoverlay.png') center/contain no-repeat;
+      mix-blend-mode: multiply;
+      /* opacity: 0.8;  /* tweak to soften if needed */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Customize Your Hoodie</h1>
+
+  <div class="controls">
+    <!-- Hoodie palette -->
+    <div class="palette-wrapper">
+      <label>Hoodie Color:</label>
+      <div id="hoodiePalette" class="palette"></div>
+    </div>
+    <!-- Text palette -->
+    <div class="palette-wrapper">
+      <label>Text Color:</label>
+      <div id="textPalette" class="palette"></div>
+    </div>
+    <!-- Icon palette -->
+    <div class="palette-wrapper">
+      <label>Icon Color:</label>
+      <div id="iconPalette" class="palette"></div>
+    </div>
+  </div>
+
+  <div class="viewer">
+    <!-- hoodie silhouette -->
+    <div id="hoodie" class="layer"
+         style="
+           --color: #0B0B0B;
+           mask-image: url('hoodiemask.png');
+           -webkit-mask-image: url('hoodiemask.png');
+         ">
+    </div>
+    <!-- Counter‑Strike text -->
+    <div id="csText" class="layer"
+         style="
+           --color: #000000;
+           mask-image: url('counterstrikemask.png');
+           -webkit-mask-image: url('counterstrikemask.png');
+         ">
+    </div>
+    <!-- gun‑man icon -->
+    <div id="icon" class="layer"
+         style="
+           --color: #000000;
+           mask-image: url('gunman.png');
+           -webkit-mask-image: url('gunman.png');
+         ">
+    </div>
+    <!-- shadow/highlight overlay -->
+    <div id="overlay"></div>
+  </div>
+
+  <script>
+    // Your two palettes: hoodie (25 colors) and text/icon (same 15 as before)
+    const hoodieColors = [
+      '#0B0B0B','#131928','#47171C','#35241B','#222E1F','#4A1C7D',
+      '#DA0A1A','#47484D','#1D50A4','#534E4A','#395D82','#515A6E',
+      '#F63880','#686868','#1D9345','#FF5723','#7E8560','#9B969C',
+      '#8DB7F6','#FF9FAF','#FFAF24','#A1C5E1','#E7D3B3','#F3D4E3',
+      '#DEDEDE'
+    ];
+    const textIconColors = [
+      '#FFFFFF','#000000','#96A1A8','#A67843','#FFCC00',
+      '#E25C27','#CC3366','#CC3333','#660000','#333366',
+      '#005397','#3399FF','#6B5294','#01784E','#7BA35A'
+    ];
+
+    // Utility to build a clickable swatch palette
+    function buildPalette(containerId, layerEl, colors) {
+      const cont = document.getElementById(containerId);
+      colors.forEach(col => {
+        const sw = document.createElement('div');
+        sw.className = 'swatch';
+        sw.style.backgroundColor = col;
+        // mark default
+        if (layerEl.style.getPropertyValue('--color').trim().toUpperCase() === col)
+          sw.classList.add('active');
+        sw.addEventListener('click', () => {
+          // clear active
+          cont.querySelectorAll('.swatch').forEach(s=>s.classList.remove('active'));
+          sw.classList.add('active');
+          layerEl.style.setProperty('--color', col);
+        });
+        cont.appendChild(sw);
+      });
+    }
+
+    // Grab your layers
+    const hoodieLayer = document.getElementById('hoodie');
+    const textLayer   = document.getElementById('csText');
+    const iconLayer   = document.getElementById('icon');
+
+    // Build all three palettes
+    buildPalette('hoodiePalette', hoodieLayer, hoodieColors);
+    buildPalette('textPalette',   textLayer,   textIconColors);
+    buildPalette('iconPalette',   iconLayer,   textIconColors);
+  </script>
+
+</body>
+</html>
